@@ -17,8 +17,8 @@
 
     <actions>
 
-        <action id="com.bhond.debugger.action.DiagramAction" class="com.bhond.debugger.action.DiagramAction" text="Diagram"
-                description="show diagram">
+        <action id="com.bhond.debugger.action.DiagramAction" class="com.bhond.debugger.action.DiagramAction" text="Copy Graph"
+                description="Copies the Graph">
             <add-to-group group-id="XDebugger.ValueGroup" anchor="first"/>
         </action>
     </actions>
