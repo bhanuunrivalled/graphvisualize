@@ -77,7 +77,7 @@ public class GraphBuilder {
                 .append("'>")
                 .append(className(objRef, false))
                 .append("</td>\n\t\t\t</tr>\n");
-        //TODO whats this cabs?
+        
         String cabs = getObjectAttributes(objRef);
         for (Field field : fs) {
             // we ignore static I dont know why :)
@@ -228,13 +228,7 @@ public class GraphBuilder {
         }
     }
 
-    /**
-     * why do we need this? and how do we use this??
-     *
-     * @param array
-     * @param index
-     * @return
-     */
+  
     public String getArrayElementAttributes(ObjectReference array, int index) {
         String result = arrayElementAttributeProviders.stream()
                 .map(p -> p.getAttribute(array, index))
@@ -256,15 +250,9 @@ public class GraphBuilder {
 
     private boolean fieldExistsAndIsPrimitive(Field field) {
         try {
-            //- The order of these statements matters.  If field is not
-            //- accessible, we want an IllegalAccessException to be raised
-            //- (and caught).  It is not correct to return true if
-            //- field.getType( ).isPrimitive( )
+         
             Type type = field.type();
             if (type instanceof PrimitiveType)
-                //- Just calling ljv.canTreatAsPrimitive is not adequate --
-                //- val will be wrapped as a Boolean or Character, etc. if we
-                //- are dealing with a truly primitive type.
                 return true;
         } catch (ClassNotLoadedException e) {
             e.printStackTrace();
