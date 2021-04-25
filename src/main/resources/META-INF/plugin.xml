@@ -1,0 +1,25 @@
+<idea-plugin>
+    <id>org.bhond.debugger</id>
+    <name>Graph Visualizer</name>
+
+    <description><![CDATA[
+    Visualize Java Object Using https://dreampuf.github.io/GraphvizOnline<br>
+    ]]></description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+
+        <action id="com.bhond.debugger.action.DiagramAction" class="com.bhond.debugger.action.DiagramAction" text="Diagram"
+                description="show diagram">
+            <add-to-group group-id="XDebugger.ValueGroup" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
