@@ -56,9 +56,8 @@ public class GraphBuilder {
                 final ReferenceType refType = ref.referenceType();
                 // default ObjectReference processing
                 List<Field> fs = refType.allFields();
-                System.out.println(fs);
                 if (hasPrimitiveFields(fs, ref)) {
-                     labelObjectWithSomePrimitiveFields(ref, fs);
+                    labelObjectWithSomePrimitiveFields(ref, fs);
                 } else {
                     labelObjectWithNoPrimitiveFields(ref);
                 }
@@ -77,7 +76,7 @@ public class GraphBuilder {
                 .append("'>")
                 .append(className(objRef, false))
                 .append("</td>\n\t\t\t</tr>\n");
-        
+
         String cabs = getObjectAttributes(objRef);
         for (Field field : fs) {
             // we ignore static I dont know why :)
@@ -85,9 +84,11 @@ public class GraphBuilder {
                 continue;
             }
             Value ref = objRef.getValue(field);
-            if (fieldExistsAndIsPrimitive(field) || IsPrimitive(objRef)) {
+            if (fieldExistsAndIsPrimitive(field) || IsPrimitive(ref)) {
                 out.append("\t\t\t<tr>\n\t\t\t\t<td>");
-                    out.append(field.name()).append(": ").append(Quote.quote(String.valueOf(ref)));
+                out.append(field.name())
+                        .append(": ")
+                        .append(Quote.quote(String.valueOf(ref)));
                 out.append("</td>\n\t\t\t</tr>\n");
             }
         }
@@ -100,7 +101,7 @@ public class GraphBuilder {
         int size = 0;
         for (Field field : fs) {
             Value ref = objRef.getValue(field);
-            if (fieldExistsAndIsPrimitive(field) || IsPrimitive(objRef))
+            if (fieldExistsAndIsPrimitive(field) || IsPrimitive(ref))
                 size++;
         }
         return size;
@@ -228,7 +229,7 @@ public class GraphBuilder {
         }
     }
 
-  
+
     public String getArrayElementAttributes(ObjectReference array, int index) {
         String result = arrayElementAttributeProviders.stream()
                 .map(p -> p.getAttribute(array, index))
@@ -250,7 +251,7 @@ public class GraphBuilder {
 
     private boolean fieldExistsAndIsPrimitive(Field field) {
         try {
-         
+
             Type type = field.type();
             if (type instanceof PrimitiveType)
                 return true;
@@ -260,7 +261,10 @@ public class GraphBuilder {
         return false;
     }
 
-    private boolean IsPrimitive(ObjectReference obj) {
+    private boolean IsPrimitive(Value obj) {
+        if (obj == null) {
+            return true;
+        }
         Type type = obj.type();
         return type instanceof PrimitiveType;
     }
