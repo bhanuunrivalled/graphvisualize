@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>org.bhond.debugger</id>
-    <name>Graph Visualizer</name>
+    <name>Graph-Visualizer</name>
 
     <description><![CDATA[
     Visualize Java Object Using https://dreampuf.github.io/GraphvizOnline<br>

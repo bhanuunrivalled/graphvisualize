@@ -14,7 +14,7 @@ public class GraphBuilder {
     //TODO later create separate strategy to extract data  from JDI value
     //private final ExtractionStrategy<Value> strategy = new JdiValueStrategy();
     private final IdentityHashMap<Object, String> objectsRefId = new IdentityHashMap<>();
-    private Direction direction = Direction.TB;
+    private final Direction direction = Direction.TB;
     private final List<FieldAttributesProvider> fieldAttributesProviders = new ArrayList<>();
     private final List<ArrayElementAttributeProvider> arrayElementAttributeProviders = new ArrayList<>();
     private final List<ObjectAttributesProvider> objectAttributesProviders = new ArrayList<>();
