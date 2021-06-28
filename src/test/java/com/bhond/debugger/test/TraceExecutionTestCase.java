@@ -10,8 +10,6 @@ import com.intellij.xdebugger.XDebugSession;
 import com.intellij.xdebugger.XDebugSessionListener;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
-
 
 public class TraceExecutionTestCase extends DebuggerTestCase {
 
@@ -25,7 +23,7 @@ public class TraceExecutionTestCase extends DebuggerTestCase {
 
     @Override
     protected String getTestAppPath() {
-        return new File("testdata").getAbsolutePath();
+        return "testData";
     }
 
     protected void doTest(boolean isResultNull) {
