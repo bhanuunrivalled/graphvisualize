@@ -21,6 +21,13 @@ public class TraceExecutionTestCase extends DebuggerTestCase {
         return null;
     }
 
+    // this does not work also
+    /*@Override
+    protected String getTestAppPath() {
+        return new File("testData").getAbsolutePath();
+    }*/
+
+    // this does not work
     @Override
     protected String getTestAppPath() {
         return "testData";
