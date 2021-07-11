@@ -1,4 +1,4 @@
-package com.bhond.debugger.test;
+package com.bhond.debugger;
 
 import com.intellij.debugger.DebuggerTestCase;
 import com.intellij.debugger.impl.OutputChecker;
@@ -9,6 +9,8 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.xdebugger.XDebugSession;
 import com.intellij.xdebugger.XDebugSessionListener;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
 
 
 public class TraceExecutionTestCase extends DebuggerTestCase {
@@ -22,16 +24,16 @@ public class TraceExecutionTestCase extends DebuggerTestCase {
     }
 
     // this does not work also
-    /*@Override
-    protected String getTestAppPath() {
-        return new File("testData").getAbsolutePath();
-    }*/
-
-    // this does not work
     @Override
     protected String getTestAppPath() {
-        return "testData";
+        return new File("testData").getAbsolutePath();
     }
+
+    // this does not work
+ /*   @Override
+    protected String getTestAppPath() {
+        return "testData";
+    }*/
 
     protected void doTest(boolean isResultNull) {
         try {

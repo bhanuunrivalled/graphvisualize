@@ -1,4 +1,4 @@
-package com.bhond.debugger.test;
+package com.bhond.debugger;
 
 public class TestSimple extends TraceExecutionTestCase {
 
