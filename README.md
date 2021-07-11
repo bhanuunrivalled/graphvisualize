@@ -1,6 +1,6 @@
 # graphvisualize
 
-WIP an Intelij plugin inspired by 
+Intelij plugin inspired by 
 
 https://atp-mipt.github.io/ljv/
 
